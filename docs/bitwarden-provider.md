@@ -109,7 +109,7 @@ place.
   support) or on `sdk-napi` (Secrets Manager only, token-based, and not
   implemented by Vaultwarden).
 - Entry of the master password needs a masked field. Two options are in
-  [the plugin README](../README.md#masked-entry): use the `dsh-secret` header
+  [the plugin README](https://github.com/theoabw/dsh-secrets#masked-entry): use the `dsh-secret` header
   that a companion prompt plugin already renders masked, or ship a small client
   half of our own for a dependency-free public install.
 - Verification needs a real account on the target server. A dedicated account

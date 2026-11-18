@@ -1,4 +1,6 @@
-# dsh-secrets
+# @theoabw/dsh-secrets
+
+[![npm](https://img.shields.io/npm/v/@theoabw/dsh-secrets?label=npm)](https://www.npmjs.com/package/@theoabw/dsh-secrets)
 
 Consent-gated secret brokering for [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness)
 (dsh).
@@ -18,6 +20,10 @@ $DSH_SECRET_A1B2… -> the value, inside your command
 
 There is no vault protocol in this plugin and no stored credential. Providers
 are ordinary commands, so whatever CLI already owns your vault keeps owning it.
+
+This is the broker half of a pair.
+[dsh-secret-prompt](https://github.com/theoabw/dsh-secret-prompt) is the ask
+half: one credential, typed into a masked field mid-task.
 
 ## Why it is built this way
 
@@ -53,7 +59,7 @@ everyone wants to make:
 - Consent is a scoped, time-bounded grant per session, and the model cannot
   answer its own consent card.
 
-[docs/audit.md](docs/audit.md) lists every network call, process, file and
+[docs/audit.md](https://github.com/theoabw/dsh-secrets/blob/main/docs/audit.md) lists every network call, process, file and
 retained value, with the grep commands to verify each one. If you want features
 over surface, use the bigger plugin; the two are not competitors at the same
 scope.
@@ -110,7 +116,7 @@ everyone wants to make:
 - Consent is a scoped, time-bounded grant per session, and the model cannot
   answer its own consent card.
 
-[docs/audit.md](docs/audit.md) lists every network call, process, file and
+[docs/audit.md](https://github.com/theoabw/dsh-secrets/blob/main/docs/audit.md) lists every network call, process, file and
 retained value, with the grep commands to verify each one. If you want features
 over surface, use the bigger plugin; the two are not competitors at the same
 scope.
@@ -211,7 +217,7 @@ prints a value. The password comes from the named environment variable, so it
 stays out of the process arguments.
 
 The design and the protocol steps are in
-[docs/bitwarden-provider.md](docs/bitwarden-provider.md).
+[docs/bitwarden-provider.md](https://github.com/theoabw/dsh-secrets/blob/main/docs/bitwarden-provider.md).
 
 ## Tools
 
