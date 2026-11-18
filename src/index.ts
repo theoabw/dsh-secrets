@@ -1,5 +1,5 @@
 /**
- * @tabw/dsh-secrets host half.
+ * @theoabw/dsh-secrets host half.
  *
  * Consent-gated secret brokering. A task that needs a credential asks for it
  * by name; the owner approves access for that session once, and every value

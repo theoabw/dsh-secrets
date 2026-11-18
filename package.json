@@ -1,5 +1,5 @@
 {
-  "name": "@tabw/dsh-secrets",
+  "name": "@theoabw/dsh-secrets",
   "version": "0.1.0",
   "description": "Consent-gated secret brokering for deepseek-harness: the agent asks for a named secret, the owner grants the session access, and the value reaches the shell as $DSH_SECRET_<handle> without ever entering the conversation.",
   "type": "module",

@@ -76,7 +76,7 @@ Then add the loader row to your profile patch (`~/.dsh/profiles/<name>/cordis.pa
 ```yaml
 - insert:
     - id: secrets
-      name: '@tabw/dsh-secrets'
+      name: '@theoabw/dsh-secrets'
       config:
         providers:
           vault:
@@ -123,7 +123,7 @@ Then add the loader row to your profile patch (`~/.dsh/profiles/<name>/cordis.pa
 ```yaml
 - insert:
     - id: secrets
-      name: '@tabw/dsh-secrets'
+      name: '@theoabw/dsh-secrets'
       config:
         providers:
           vault:

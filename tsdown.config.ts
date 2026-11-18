@@ -1,5 +1,5 @@
 /**
- * Build for @tabw/dsh-secrets.
+ * Build for @theoabw/dsh-secrets.
  *
  * The plugin is host-only: `lib/index.js` is an ordinary ESM module the dsh
  * host loader imports, and every `@deepseek-ai/*` import stays external
@@ -8,7 +8,7 @@
 import { isBuiltin } from 'node:module'
 import { defineConfig } from 'tsdown'
 
-const ID = '@tabw/dsh-secrets'
+const ID = '@theoabw/dsh-secrets'
 
 export default defineConfig({
   name: ID,

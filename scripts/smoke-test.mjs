@@ -1,5 +1,5 @@
 /**
- * Host-half test for @tabw/dsh-secrets.
+ * Host-half test for @theoabw/dsh-secrets.
  *
  * Loads the BUILT lib/index.js and drives apply() against a minimal mock
  * cordis context: captures the registered tools, the shellEnv contributors,
