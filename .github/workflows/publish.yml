@@ -1,0 +1,35 @@
+name: publish
+
+# One-time setup before the first automated release: on npmjs.com, open the
+# package settings, add a trusted publisher for GitHub Actions, and name this
+# repository and `publish.yml`. After that a pushed tag publishes with no token.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write # npm trusted publishing
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Tag matches the package version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          version="$(node -p "require('./package.json').version")"
+          if [ "$tag" != "$version" ]; then
+            echo "tag $tag does not match package version $version" >&2
+            exit 1
+          fi
+      - run: npm publish --provenance --access public

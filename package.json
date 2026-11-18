@@ -2,6 +2,7 @@
   "name": "@theoabw/dsh-secrets",
   "version": "0.1.0",
   "description": "Consent-gated secret brokering for deepseek-harness: the agent asks for a named secret, the owner grants the session access, and the value reaches the shell as $DSH_SECRET_<handle> without ever entering the conversation.",
+  "author": "Theo Wilenius <theo@tabw.dev>",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -14,6 +15,7 @@
   "engines": {
     "node": ">=22"
   },
+  "packageManager": "pnpm@11.23.0",
   "keywords": [
     "dsh",
     "deepseek-harness",
@@ -41,14 +43,13 @@
     "check": "pnpm run typecheck && pnpm run build && pnpm run test",
     "prepack": "tsdown"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^26.2.0",
     "tsdown": "^0.22.2",
     "typescript": "^6.0.3"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "author": "Theo Wilenius <theo@tabw.dev>"
+  }
 }

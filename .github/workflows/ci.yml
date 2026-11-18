@@ -1,0 +1,30 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run build
+      - run: node scripts/check-bundle.mjs
+      - run: npm pack --dry-run
+      # The test suites import the plugin, which imports @deepseek-ai/* from the
+      # host. Those packages are not published at the version this plugin is
+      # built against, so a hosted runner cannot run them yet. Add
+      # `pnpm test` here once the harness publishes a matching version.
