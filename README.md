@@ -60,15 +60,8 @@ scope.
 
 ## Install
 
-The plugin is not on npm yet, so install it from a checkout:
-
 ```sh
-git clone https://github.com/theoabw/dsh-secrets
-cd dsh-secrets
-pnpm install
-bash scripts/link-deps.sh   # symlink the running dsh install's @deepseek-ai packages
-pnpm run build              # produces lib/, which the profile installs
-dsh plugin --profile web add "file:$PWD"
+dsh plugin --profile web add @theoabw/dsh-secrets
 ```
 
 Then add the loader row to your profile patch (`~/.dsh/profiles/<name>/cordis.patch.yml`):
@@ -87,6 +80,17 @@ Then add the loader row to your profile patch (`~/.dsh/profiles/<name>/cordis.pa
 
 The plugin exists only in the host half, so a service restart (`dsh.service`)
 is what makes it appear. Restarting ends live sessions.
+
+### From a checkout
+
+```sh
+git clone https://github.com/theoabw/dsh-secrets
+cd dsh-secrets
+pnpm install
+bash scripts/link-deps.sh   # symlink the running dsh install's @deepseek-ai packages
+pnpm run build              # produces lib/, which the profile installs
+dsh plugin --profile web add "file:$PWD"
+```
 
 `pnpm run check` runs the typecheck, the build, and the three test suites.
 
