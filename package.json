@@ -40,12 +40,16 @@
     "typecheck": "tsc --noEmit",
     "link-deps": "bash scripts/link-deps.sh",
     "test": "node scripts/crypto-test.mjs && node scripts/smoke-test.mjs && node scripts/bitwarden-test.mjs",
-    "check": "pnpm run typecheck && pnpm run build && pnpm run test"
+    "check": "pnpm run typecheck && pnpm run build && pnpm run test",
+    "prepack": "tsdown"
   },
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^26.2.0",
     "tsdown": "^0.22.2",
     "typescript": "^6.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
