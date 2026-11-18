@@ -1,0 +1,51 @@
+{
+  "name": "@tabw/dsh-secrets",
+  "version": "0.1.0",
+  "description": "Consent-gated secret brokering for deepseek-harness: the agent asks for a named secret, the owner grants the session access, and the value reaches the shell as $DSH_SECRET_<handle> without ever entering the conversation.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "secrets",
+    "consent",
+    "agent",
+    "vaultwarden",
+    "bitwarden",
+    "1password",
+    "rbw"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theoabw/dsh-secrets.git"
+  },
+  "homepage": "https://github.com/theoabw/dsh-secrets#readme",
+  "bugs": {
+    "url": "https://github.com/theoabw/dsh-secrets/issues"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "link-deps": "bash scripts/link-deps.sh",
+    "test": "node scripts/crypto-test.mjs && node scripts/smoke-test.mjs && node scripts/bitwarden-test.mjs",
+    "check": "pnpm run typecheck && pnpm run build && pnpm run test"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "tsdown": "^0.22.2",
+    "typescript": "^6.0.3"
+  }
+}
