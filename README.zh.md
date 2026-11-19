@@ -52,7 +52,7 @@ dsh 有一个成熟的 Vaultwarden 插件，带密码库浏览、写入、passke
 
 [docs/audit.md](https://github.com/theoabw/dsh-secrets/blob/main/docs/audit.md)
 列出了每一次网络调用、每一个进程、每一个文件和每一个保留的值，并给出逐条核对的
-grep 命令。如果你更看重功能而不是面大小，请用那个更大的插件；两者在同一个定位上
+grep 命令。如果你更看重功能覆盖而不是攻击面大小，请用那个更大的插件；两者在同一个定位上
 并不是竞品。
 
 ## 安装
@@ -249,7 +249,7 @@ pnpm test
 ## 相关工作
 
 broker 这种模式并不新鲜，已有多个项目采取“值不进入模型”的立场。本插件存在的
-理由是在 dsh 这个场景里，小而可审计的面比功能覆盖更重要。
+理由是在 dsh 这个场景里，小且可审计的攻击面比功能覆盖更重要。
 
 - [dsh-vaultwarden](https://github.com/BuvkB/dsh-vaultwarden)：功能完整的
   Vaultwarden 集成，带密码库浏览、写入和 passkey。
