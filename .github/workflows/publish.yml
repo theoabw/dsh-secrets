@@ -32,4 +32,17 @@ jobs:
             echo "tag $tag does not match package version $version" >&2
             exit 1
           fi
-      - run: npm publish --provenance --access public
+      - name: Decide whether to publish
+        id: state
+        run: |
+          name="$(node -p "require('./package.json').name")"
+          version="$(node -p "require('./package.json').version")"
+          if npm view "$name@$version" version >/dev/null 2>&1; then
+            echo "published=true" >> "$GITHUB_OUTPUT"
+            echo "$name@$version is already on the registry, nothing to do"
+          else
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            echo "$name@$version is not on the registry, publishing"
+          fi
+      - if: steps.state.outputs.published == 'false'
+        run: npm publish --provenance --access public
