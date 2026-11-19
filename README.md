@@ -2,6 +2,8 @@
 
 [![npm](https://img.shields.io/npm/v/@theoabw/dsh-secrets?label=npm)](https://www.npmjs.com/package/@theoabw/dsh-secrets)
 
+English | [中文](https://github.com/theoabw/dsh-secrets/blob/main/README.zh.md)
+
 Consent-gated secret brokering for [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness)
 (dsh).
 
@@ -99,51 +101,6 @@ dsh plugin --profile web add "file:$PWD"
 ```
 
 `pnpm run check` runs the typecheck, the build, and the three test suites.
-
-## Why this exists next to a bigger vault plugin
-
-There is a mature Vaultwarden plugin for dsh with a vault browser, write
-support, passkey export and a settings page. This one is deliberately smaller,
-because handing an integration of that size your vault is a decision not
-everyone wants to make:
-
-- 1935 lines of runtime TypeScript, no runtime dependencies, and three HTTP
-  endpoints on the one host you configure.
-- No write path into the vault. No cache, no state file, no stored master
-  password.
-- A fetched value never comes back to the model. It goes into the command's
-  environment and nowhere else.
-- Consent is a scoped, time-bounded grant per session, and the model cannot
-  answer its own consent card.
-
-[docs/audit.md](https://github.com/theoabw/dsh-secrets/blob/main/docs/audit.md) lists every network call, process, file and
-retained value, with the grep commands to verify each one. If you want features
-over surface, use the bigger plugin; the two are not competitors at the same
-scope.
-
-## Install
-
-```sh
-# in your dsh profile directory (`dsh plugin --profile <name> ...` manages it)
-dsh plugin --profile web add "file:/path/to/dsh-secrets"
-```
-
-Then add the loader row to your profile patch (`~/.dsh/profiles/<name>/cordis.patch.yml`):
-
-```yaml
-- insert:
-    - id: secrets
-      name: '@theoabw/dsh-secrets'
-      config:
-        providers:
-          vault:
-            command: ["rbw", "get", "{item}", "--field", "{field}"]
-            list: ["rbw", "list"]
-        grantMinutes: 30
-```
-
-The plugin exists only in the host half, so a service restart (`dsh.service`)
-is what makes it appear. Restarting ends live sessions.
 
 ## Configure providers
 
