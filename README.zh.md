@@ -4,6 +4,8 @@
 
 [English](https://github.com/theoabw/dsh-secrets/blob/main/README.md) | 中文
 
+本文件是英文文档的翻译。若两者不一致，以英文版为准；`SECURITY.md` 与 `docs/` 中的安全说明只提供英文，以免翻译滞后带来错误陈述。
+
 面向 [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness)（dsh）
 的、需要所有者同意的密钥代理插件。
 
